@@ -17,9 +17,13 @@ export const businessService = createApi({
         query: (userId) => `/userId/${userId}`,
         providesTags: ["Business"],
         }),
+        getBusiness: builder.query<TypeBusiness, string>({
+        query: (id) => `/${id}`,
+        providesTags: ["Business"],
+        }),
       
     }),
     });
 
 
-export const { useGetBusinessesQuery, useGetBusinessByUserIdQuery } = businessService;
+export const { useGetBusinessesQuery, useGetBusinessByUserIdQuery,useGetBusinessQuery } = businessService;

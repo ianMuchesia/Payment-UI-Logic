@@ -5,6 +5,7 @@ const MyServiceBundles = () => {
     const navigate = useNavigate();
 
     const { data,isLoading,error} = useGetUserPackagesQuery(27);
+    console.log(data);
   return (
     <div>
     <div className="mx-32 my-24">
@@ -22,7 +23,7 @@ const MyServiceBundles = () => {
               <div className="flex items-center gap-4">
                 {
                     service.isAttachedToBusiness ?
-                   <h2 className="text-green-500">Attached to Business</h2>
+                   <h2 className="text-green-500">Attached to Business:{service.business?.name}</h2>
                     :
                     <button className="bg-blue-500 text-white px-4 py-2 rounded-md mt-4"
                     onClick={() => navigate(`/attach-to-business?serviceBundleId=${service.id}&id=${service.id}`)}
@@ -30,6 +31,7 @@ const MyServiceBundles = () => {
                      Attach to Business
                     </button>
                 }
+
                 {/* <button className="bg-blue-500 text-white px-4 py-2 rounded-md mt-4"
                 onClick={() => navigate(`/payment-form?serviceId=${service.id}`)}
                 >
