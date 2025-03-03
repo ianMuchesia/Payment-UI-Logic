@@ -5,17 +5,20 @@ import cartSlice from './features/cartSlice';
 import authSlice from './features/authSlice';
 import { paymentService } from './services/paymentService';
 import { businessService } from './services/businessService';
+import { packageService } from './services/packageService';
 export const store = configureStore({
     reducer: {
         cart: cartSlice,
         auth:authSlice,
         [paymentService.reducerPath]: paymentService.reducer,
         [businessService.reducerPath]: businessService.reducer,
+        [packageService.reducerPath]: packageService.reducer,
        
        
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(paymentService.middleware)
-    .concat(businessService.middleware),
+    .concat(businessService.middleware)
+    .concat(packageService.middleware),
     });
 
 

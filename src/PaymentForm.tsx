@@ -1,8 +1,9 @@
 import { useLocation } from "react-router-dom";
-import { useGetPackageServicesByIdQuery } from "./store/services/paymentService";
+
 import { Item } from "./@types";
 import { useState } from "react";
 import axios from "axios";
+import { useGetServicesByIdQuery } from "./store/services/packageService";
 
 const PaymentForm = () => {
   const location = useLocation();
@@ -25,7 +26,7 @@ const PaymentForm = () => {
     return <div>Service ID or PackageID is required</div>;
   }
 
-  const { data, isLoading, error } = useGetPackageServicesByIdQuery(serviceId);
+  const { data, isLoading, error } = useGetServicesByIdQuery(serviceId);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -49,12 +50,12 @@ const PaymentForm = () => {
 
           email,
           phoneNumber,
-          packageServiceId: service.id ??null,
+          ServiceId: service.id ??null,
           packageCardId: packageCardId ?? null,
 
           firstName,
           lastName,
-          callbackURL:"http://localhost:5173//callback"
+          callbackURL:"http://localhost:5173/callback"
         }
       );
 
@@ -76,6 +77,7 @@ const PaymentForm = () => {
       console.error("Error initiating payment:", error);
     }
   };
+
   return (
     <div className="mx-32">
       <div className="mx-32 my-24">
@@ -85,7 +87,7 @@ const PaymentForm = () => {
           <p className="text-gray-500">{service.description}</p>
           <p className="text-gray-500">Price: {service.price}</p>
           <p className="text-gray-500">
-            Duration: {service.package.durationDays} days
+            Duration: {service.durationDays} days
           </p>
           <button className="bg-blue-500 text-white px-4 py-2 rounded-md mt-4">
             Pay ${service.price}
@@ -95,7 +97,7 @@ const PaymentForm = () => {
       <div className="mt-4 border-4 p-8 rounded-lg">
         <h1 className="text-lg">
           Payment Form for {service.name} with price ${service.price} and
-          duration of {service.package.durationDays} days
+          duration of {service.durationDays} days
         </h1>
         <form className="mt-4" onSubmit={initiatePayment}>
           <div className="flex flex-col gap-4">

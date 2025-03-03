@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { Item } from "./@types";
-import { useGetPackageServicesQuery } from "./store/services/paymentService";
+import { useGetServicesQuery } from "./store/services/packageService";
 
 const ServiceBundles = () => {
     const navigate = useNavigate();
-  const { data, isLoading, error } = useGetPackageServicesQuery(undefined);
+  const { data, isLoading, error } = useGetServicesQuery(undefined);
   const services = data?.data as Item[];
   return (
     <div>

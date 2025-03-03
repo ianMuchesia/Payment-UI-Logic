@@ -14,11 +14,11 @@ const MyServiceBundles = () => {
         {isLoading && <div>Loading...</div>}
 
         {data &&
-          data.data.map((service) => (
+          data.data.map((service:any) => (
             <div key={service.id} className="bg-white shadow-md rounded-md p-4">
-              <h2 className="text-xl font-bold">{service.packageService.name}</h2>
-              <p className="text-gray-500">{service.packageService.description}</p>
-              <p className="text-gray-500">Price: {service.packageService.price}</p>
+              <h2 className="text-xl font-bold">{service.service.name}</h2>
+              <p className="text-gray-500">{service.service.description}</p>
+              <p className="text-gray-500">Price: {service.service.price}</p>
 
               <div className="flex items-center gap-4">
                 {
