@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import { useGetPackageCardWithIdQuery } from './store/services/paymentService';
 import axios from 'axios';
+import { useGetPackageByIdQuery } from './store/services/packageService';
 
 const PaymentFormUsingCard = () => {
     const location = useLocation();
@@ -24,7 +25,7 @@ const PaymentFormUsingCard = () => {
       return <div>PackageID is required</div>;
     }
   
-    const { data, isLoading, error } = useGetPackageCardWithIdQuery(packageCardId);
+    const { data, isLoading, error } = useGetPackageByIdQuery(packageCardId);
   
     if (isLoading) {
       return <div>Loading...</div>;
@@ -42,7 +43,7 @@ const PaymentFormUsingCard = () => {
       try {
         setLoading(true);
         const response = await axios.post(
-          "http://localhost:5088/api/payment/initiate-payment",
+          "http://localhost:5088/api/v2/payment/initiate-payment",
           {
             amount: 1,
             userID: 27,
@@ -54,6 +55,7 @@ const PaymentFormUsingCard = () => {
   
             firstName,
             lastName,
+            callBackUrl:"http://localhost:5173/callback"
           }
         );
   
@@ -61,9 +63,9 @@ const PaymentFormUsingCard = () => {
   
         // Ensure the URL is correctly accessed
         const paymentUrl = response.data.data;
-        console.log(paymentUrl);
-        if (paymentUrl) {
-          window.open(paymentUrl, "_blank");
+        //console.log(paymentUrl);
+        if (paymentUrl.redirecturl) {
+          window.open(paymentUrl.redirecturl, "_blank");
           //window.location.href = paymentUrl;
         } else {
           console.error("Payment URL not found in response");

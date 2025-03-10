@@ -19,6 +19,11 @@ const MyServiceBundles = () => {
               <h2 className="text-xl font-bold">{service.service.name}</h2>
               <p className="text-gray-500">{service.service.description}</p>
               <p className="text-gray-500">Price: {service.service.price}</p>
+              {
+                service.userPackageId !== null &&(
+                  <p className="text-gray-500">Package: {service.userPackage.packageCard.name} days</p>
+                )
+              }
 
               <div className="flex items-center gap-4">
                 {

@@ -43,7 +43,7 @@ const PaymentForm = () => {
     try {
       setLoading(true);
       const response = await axios.post(
-        "http://localhost:5088/api/payment/initiate-payment",
+        "http://localhost:5088/api/v2/payment/initiate-payment",
         {
           amount: 1,
           userID: 27,
@@ -62,10 +62,10 @@ const PaymentForm = () => {
       console.log(response);
 
       // Ensure the URL is correctly accessed
-      const paymentUrl = response.data.data;
-      console.log(paymentUrl);
-      if (paymentUrl) {
-        window.open(paymentUrl, "_blank");
+      const res = response.data;
+      console.log(res);
+      if (res.success) {
+        window.open(res.redirecturl, "_blank");
         //window.location.href = paymentUrl;
       } else {
         console.error("Payment URL not found in response");

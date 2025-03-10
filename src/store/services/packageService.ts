@@ -12,7 +12,7 @@ export const packageService = createApi({
         getPackages: builder.query({
             query: () => 
             ({
-                url: "/packages",
+                url: "/",
                 method: "GET",
                 
             })
@@ -21,7 +21,7 @@ export const packageService = createApi({
             providesTags: ["Package"],
         }),
         getPackageById: builder.query({
-            query: (id) => `/packages/${id}`,
+            query: (id) => `/${id}`,
             providesTags: ["Package"],
         }),
         getUserPackages: builder.query({
