@@ -6,7 +6,7 @@ import { TypeBusiness } from "../../@types";
 
 export const businessService = createApi({
     reducerPath: "businessService",
-    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5088/api/Business" }),
+    baseQuery: fetchBaseQuery({ baseUrl: "http://41.90.106.13:5080/api/Business" }),
     tagTypes: ["Business"],
     endpoints: (builder) => ({
         getBusinesses: builder.query({

@@ -43,7 +43,7 @@ const PaymentFormUsingCard = () => {
       try {
         setLoading(true);
         const response = await axios.post(
-          "http://localhost:5088/api/v2/payment/initiate-payment",
+          "http://41.90.106.13:5080/api/v2/payment/initiate-payment",
           {
             amount: 1,
             userID: 27,

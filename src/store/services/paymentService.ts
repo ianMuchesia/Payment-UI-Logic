@@ -4,7 +4,7 @@ import { CreateServiceBundleRequest, ServiceBundlesResponse, TypePackageCard, Ty
 export const paymentService = createApi({
   reducerPath: "paymentService",
   baseQuery: fetchBaseQuery({ 
-    baseUrl: "http://localhost:5088/api/payment"
+    baseUrl: "http://41.90.106.13:5080/api/payment"
  }),
   tagTypes: ["Payment"],
   endpoints: (builder) => ({

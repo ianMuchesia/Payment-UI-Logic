@@ -19,7 +19,7 @@ const PaymentCallback = () => {
     const fetchTransactionStatus = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5088/api/v2/payment/transaction-status/${orderTrackingId}/user/27`
+          `http://41.90.106.13:5080/api/v2/payment/transaction-status/${orderTrackingId}/user/27`
         );
         console.log(response);
         setStatus(response.data.data as TypePayment);

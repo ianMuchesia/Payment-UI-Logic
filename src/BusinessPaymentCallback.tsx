@@ -19,7 +19,7 @@ const BusinessPaymentCallback = () => {
     const fetchTransactionStatus = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5088/api/businesspayment/status?orderTrackingID=${orderTrackingId}&userID=27`,
+          `http://41.90.106.13:5080/api/businesspayment/status?orderTrackingID=${orderTrackingId}&userID=27`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

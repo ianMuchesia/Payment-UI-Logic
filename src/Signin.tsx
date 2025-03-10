@@ -27,7 +27,7 @@ const Signin = () => {
     try {
       if (form.phone === "" || form.password === "") return;
       const response = await axios.post(
-        "http://localhost:5088/api/auth/login/by-phone",
+        "http://41.90.106.13:5080/api/auth/login/by-phone",
         form
       );
 
